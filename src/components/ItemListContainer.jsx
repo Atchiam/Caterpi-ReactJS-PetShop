@@ -1,4 +1,5 @@
 import React from "react";
+import ItemCount from "./ItemCount";
 
 const ItemListContainer = ({greeting}) => {
     return (
@@ -7,6 +8,7 @@ const ItemListContainer = ({greeting}) => {
                 <div className="col-md-12 text-center">
                     <div className="alert alert-success" role="alert">
                         <p>{greeting}</p>
+                        <ItemCount/> {/*esto debe borrarce OJO */}
                     </div>                    
                 </div>
             </div>
