@@ -1,17 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import ItemCount from "./ItemCount";
+import ItemList from "./ItemList";
+import arrayProductos from "./json/arrayProductos.json";
 
-const ItemListContainer = ({greeting}) => {
+const ItemListContainer = () => {
+    const [items, setItems] = useState([]);
+    const {id} = useParams();
+
+    useEffect(() =>{
+        const promesa = new Promise((resolve, reject) => {
+            setTimeout(()=>{
+                resolve(id ? arrayProductos.filter(items=> items.categoria===id): arrayProductos);
+            }, 2000)
+        })
+
+        promesa.then((data)=>{
+            console.log(data);
+            setItems(data);
+        })
+    }, [id])
+
     return (
         <div className="container py-5">
-            <div className="row">
-                <div className="col-md-12 text-center">
-                    <div className="alert alert-success" role="alert">
-                        <p>{greeting}</p>
-                        <ItemCount/> {/*esto debe borrarce OJO */}
-                    </div>                    
-                </div>
-            </div>
+                <ItemList items={items}/>
+                <ItemCount stockItems="10" />
         </div>
     )
 }
