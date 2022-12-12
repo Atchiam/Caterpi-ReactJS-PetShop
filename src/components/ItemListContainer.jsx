@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ItemCount from "./ItemCount";
 import ItemList from "./ItemList";
 import arrayProductos from "./json/arrayProductos.json";
 
@@ -9,7 +8,7 @@ const ItemListContainer = () => {
     const {id} = useParams();
 
     useEffect(() =>{
-        const promesa = new Promise((resolve, reject) => {
+        const promesa = new Promise((resolve) => {
             setTimeout(()=>{
                 resolve(id ? arrayProductos.filter(items=> items.categoria===id): arrayProductos);
             }, 2000)
@@ -24,7 +23,6 @@ const ItemListContainer = () => {
     return (
         <div className="container py-5">
                 <ItemList items={items}/>
-                <ItemCount stockItems="10" />
         </div>
     )
 }
