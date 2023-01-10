@@ -3,7 +3,7 @@ import React from "react";
 
 function Footer (){
     return(
-        <div className="">
+        <div className="bg-info bg-opacity-25 p-1">
             <div>
                 <p className="text-center text-decoration-none mb-0">
                     Tel: *******
